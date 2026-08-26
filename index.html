@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>División Ómnibus - Salto | Sitio Oficial</title>
+    <title>División Ómnibus - Salto | Horarios</title>
     
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
@@ -69,7 +69,19 @@
             overflow: hidden;
         }
 
-        /* Cabecera Hero (Bento Full Width) */
+        /* Banner de Sitio No Oficial */
+        .disclaimer-banner {
+            grid-column: span 12;
+            background-color: #fff1f2;
+            color: #be123c;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #fecdd3;
+            font-size: 1.05rem;
+        }
+
+        /* Cabecera Hero */
         .hero { 
             grid-column: span 12;
             background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6)), 
@@ -86,25 +98,17 @@
         .hero h1 { font-size: 3rem; margin: 0 0 15px 0; font-weight: 800; letter-spacing: -1px; }
         .hero p { font-size: 1.25rem; max-width: 600px; margin: 0; color: #cbd5e1; }
 
-        /* Sección de Avisos (Bento Columna Izquierda) */
+        /* OCULTAR Sección de Avisos estricto por CSS */
         .alertas-section {
-            grid-column: span 12;
-            display: flex;
-            flex-direction: column;
-        }
-        @media (min-width: 992px) {
-            .alertas-section { grid-column: span 4; }
+            display: none !important;
         }
 
-        /* Sección de Horarios (Bento Columna Derecha) */
+        /* Sección de Horarios (Ahora ocupa todo el ancho) */
         .horarios-section {
             grid-column: span 12;
         }
-        @media (min-width: 992px) {
-            .horarios-section { grid-column: span 8; }
-        }
 
-        /* Sección Contacto (Bento Full Width) */
+        /* Sección Contacto */
         .contacto-section {
             grid-column: span 12;
             text-align: center;
@@ -124,24 +128,11 @@
         }
         .contacto-section .seccion-titulo { color: white; justify-content: center;}
 
-        /* Estilos inyectados por JS (Alertas) */
-        .aviso-card { 
-            background-color: #fffbeb; 
-            border: 1px solid #fde68a;
-            padding: 20px; 
-            margin-bottom: 15px; 
-            border-radius: 16px; 
-            transition: 0.3s;
-        }
-        .aviso-card:hover { transform: translateX(5px); }
-        .aviso-fecha { font-size: 0.85rem; color: #d97706; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
-        .aviso-texto { font-size: 1.05rem; margin: 0; color: #92400e; font-weight: 500;}
-
         /* Estilos inyectados por JS (Horarios) */
         .grid-horarios { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-            gap: 20px; 
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+            gap: 25px; 
             margin-top: 20px;
         }
         .horario-card { 
@@ -178,6 +169,7 @@
             font-weight: 700;
             position: relative;
             z-index: 2;
+            text-align: center;
         }
 
         /* Visor de imágenes */
@@ -197,12 +189,40 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
+        /* Diseño del Footer GoWeb */
         footer { 
             text-align: center; 
-            padding: 30px; 
+            padding: 50px 20px; 
             color: var(--text-muted); 
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer-branding {
             margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .footer-logo {
+            max-width: 160px; /* Ajusta el tamaño de tu logo aquí */
+            height: auto;
+            border-radius: 8px;
+        }
+        .designer-text {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
         }
 
     </style>
@@ -211,28 +231,30 @@
 
     <nav>
         <div class="logo-text">
-            <span style="font-size: 1.8rem;">🚌</span> División Ómnibus
+            <span style="font-size: 1.8rem;">🚌</span> Horarios Ómnibus
         </div>
         <ul>
-            <li><a href="#alertas">Avisos</a></li>
-            <li><a href="#horarios">Líneas</a></li>
+            <li><a href="#horarios">Ver Líneas</a></li>
         </ul>
     </nav>
 
     <div class="bento-container">
         
+        <!-- Banner de descargo de responsabilidad -->
+        <div class="bento-card disclaimer-banner">
+            ⚠️ <strong>Aviso:</strong> Esta es una página web no oficial. Es un desarrollo personal creado para llegar a más gente y facilitar el acceso a los horarios del servicio.
+        </div>
+
         <header class="bento-card hero">
             <h1>Transporte Urbano <br>de Salto</h1>
-            <p>Información oficial, horarios en tiempo real y comunicados para el pasajero.</p>
+            <p>Horarios actualizados en tiempo real para el pasajero.</p>
         </header>
 
         <main class="bento-container" style="display: contents;">
             
+            <!-- Esta sección se mantiene para no romper el JS, pero está oculta visualmente -->
             <section id="alertas" class="bento-card alertas-section">
-                <h2 class="seccion-titulo">⚠️ Últimos Avisos</h2>
-                <div id="contenedorAlertas">
-                    <p style="color: var(--text-muted); font-style: italic;">Cargando información operativa...</p>
-                </div>
+                <div id="contenedorAlertas"></div>
             </section>
 
             <section id="horarios" class="bento-card horarios-section">
@@ -244,16 +266,23 @@
             </section>
             
             <section class="bento-card contacto-section">
-                <h2 class="seccion-titulo">Contacto y Sugerencias</h2>
-                <p style="color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">¿Tiene alguna duda sobre el servicio? Estamos para ayudarle.</p>
+                <h2 class="seccion-titulo">Contacto Oficial</h2>
+                <p style="color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Para reclamos o consultas sobre el servicio comuníquese con la intendencia.</p>
                 <p style="font-size: 1.1rem;"><strong>Oficina de Atención al Público:</strong> Intendencia de Salto</p>
             </section>
 
         </main>
     </div>
 
+    <!-- Footer Personalizado GoWeb -->
     <footer>
-        <p>&copy; 2026 Intendencia de Salto - División Transporte.</p>
+        <p>Los horarios mostrados son a título informativo.</p>
+        
+        <div class="footer-branding">
+            <!-- REEMPLAZA EL SRC CON EL ENLACE A TU LOGO -->
+            <img src="https://via.placeholder.com/160x60?text=Sube+tu+Logo+Aquí" alt="GoWeb Logo" class="footer-logo">
+            <span class="designer-text">Diseñada por Gonzalo Finozzi | GoWeb</span>
+        </div>
     </footer>
 
     <!-- INICIO DEL SCRIPT INTACTO -->
@@ -305,5 +334,6 @@
                 </div>`;
             }
         });
-    </script></body></html>
-    
+    </script>
+</body>
+</html>
